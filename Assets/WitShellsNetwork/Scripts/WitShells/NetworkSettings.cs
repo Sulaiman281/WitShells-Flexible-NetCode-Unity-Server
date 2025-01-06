@@ -17,7 +17,6 @@ namespace WitShells
                 if (instance == null)
                 {
                     instance = Resources.Load<NetworkSettings>("NetworkSettings");
-
                     instance.serverAddress = instance.GetIPAddress();
                 }
 
@@ -39,14 +38,9 @@ namespace WitShells
         {
             get
             {
-                if (serverType == ServerType.LOCAL)
-                {
-                    return GetIPAddress();
-                }
-
                 if (string.IsNullOrEmpty(serverAddress))
                 {
-                    Debug.LogError("Server Address is not set. Please set the server address.");
+                    serverAddress =  GetIPAddress();
                 }
 
                 return serverAddress;
